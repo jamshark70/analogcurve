@@ -1,0 +1,26 @@
+class:: AnalogCurve
+summary:: A polynomial filter to analog-ize a waveform
+related:: TODO
+categories:: UGens>TODO
+
+description::
+
+A polynomial filter to analog-ize a waveform
+
+
+classmethods::
+
+method::ar, kr
+
+argument::TODO
+
+argument::TODO
+
+
+examples::
+
+code::
+
+{ AnalogCurve.ar(/* TODO */) }.play
+
+::
