@@ -24,8 +24,11 @@ void AnalogCurve::next(int nSamples) {
     // Distortion formula stolen from
     // https://github.com/VCVRack/Fundamental/blob/v1/src/VCO.cpp#L23
     for (int i = 0; i < nSamples; ++i) {
-        float x = input[i] * 0.5 + 0.5;
-        outbuf[i] = (((x * factor + offset) * x + 3) / (x * 2 + 3));
+        float x = input[i];
+        float x01 = x * 0.5f + 0.5f;
+        // *(outbuf++) = (((x * factor + offset) * x + 3) / (x * 2 + 3));
+        // denominator: 0-1 * 2 --> 0-2, then +3 --> 3-5 == x+4
+        *(outbuf++) = (((x01 * factor + offset) * x01 + 3.f) / (x + 4.f));
     }
 }
 
