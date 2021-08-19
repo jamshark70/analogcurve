@@ -13,14 +13,19 @@ AnalogCurve::AnalogCurve() {
     next(1);
 }
 
+// TODO: De-zipper the factor and offset inputs
 void AnalogCurve::next(int nSamples) {
     const float* input = in(0);
-    const float* gain = in(1);
+    float factor = *in(1);
+    float offset = *in(2);
+    
     float* outbuf = out(0);
 
-    // simple gain function
+    // Distortion formula stolen from
+    // https://github.com/VCVRack/Fundamental/blob/v1/src/VCO.cpp#L23
     for (int i = 0; i < nSamples; ++i) {
-        outbuf[i] = input[i] * gain[i];
+        float x = input[i] * 0.5 + 0.5;
+        outbuf[i] = (((x * factor + offset) * x + 3) / (x * 2 + 3));
     }
 }
 

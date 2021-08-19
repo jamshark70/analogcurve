@@ -19,6 +19,8 @@ private:
     void next(int nSamples);
 
     // Member variables
+    // float mFactor = 5.;
+    // float mOffset = -13.;
 };
 
 } // namespace AnalogCurve
