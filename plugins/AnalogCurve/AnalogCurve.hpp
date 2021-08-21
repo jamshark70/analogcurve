@@ -17,7 +17,8 @@ public:
 private:
     // Calc function
     void next(int nSamples);
-
+    void next8(int nSamples);
+  
     // Member variables
     // float mFactor = 5.;
     // float mOffset = -13.;
